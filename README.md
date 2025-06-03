@@ -16,22 +16,36 @@ Este projeto é uma API simples feita com **Node.js** e **Express**, que possui 
 
 ## 📁 Estrutura do Projeto
 
-Api/
 ├── node_modules/
+
 ├── src/
+
 │ ├── controllers/
+
 │ │ ├── login.js
+
 │ │ └── posts.js
+
 │ ├── data/
+
 │ │ └── posts.js
+
 │ ├── middlewares/
+
 │ │ └── auth.js
+
 │ └── routes/
+
 │   ├── login.js
+
 │   └── posts.js
+
 ├── .env
+
 ├── package-lock.json
+
 ├── package.json
+
 └── server.js
 
 ---

@@ -1,9 +1,8 @@
-const postsController = require("../controllers/posts");
-const validate = require("../middlewares/auth"); // se tiver autenticação
-
 const express = require('express');
-const postsRoutes = express.Router();
+const router = express.Router();
+const postsController = require('../controllers/posts');
+const { validateToken } = require('../utils/token');
 
-postsRoutes.get('/', validate, postsController.posts); // rota GET /posts
+router.get('/', validateToken, postsController.posts);
 
-module.exports = postsRoutes;
+module.exports = router;

@@ -1,19 +1,22 @@
-const jsonwebtoken = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 
-const validate = (req, res, next) => {
-    const token  = req.headers.authorization?.split(" ")[1];
+const SEGREDO = "chave_secreta";
 
-    if(!token) res.status(401).send({message : "Access Denied. No token provided."}).end();
-    
-    try {
-        const payload = jsonwebtoken.verify(token, process.env.SECRET_JWT);
+function autenticar(req, res, next) {
+  const authHeader = req.headers.authorization;
 
-        req.headers['user'] = payload;
+  if (!authHeader) {
+    return res.status(401).json({ mensagem: "Token não fornecido" });
+  }
 
-        next();
-    }catch(err) {
-        res.status(500).send(err).end();
-    }
+  const [, token] = authHeader.split(" ");
+
+  try {
+    jwt.verify(token, SEGREDO);
+    next();
+  } catch (err) {
+    return res.status(401).json({ mensagem: "Token inválido ou expirado" });
+  }
 }
 
-module.exports = validate;
+module.exports = autenticar;

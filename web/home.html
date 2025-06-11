@@ -36,7 +36,21 @@
   <button onclick="sair()">Sair</button>
 
   <script>
-    // Posts estáticos usando os dados que você mandou
+    const token = localStorage.getItem("token");
+    const loginTime = localStorage.getItem("loginTime");
+
+    if (!token || !loginTime) {
+      alert("Você precisa fazer login.");
+      window.location.href = "index.html";
+    } else {
+      const agora = Date.now();
+      const tempoPassado = agora - parseInt(loginTime);
+
+      if (tempoPassado > 2 * 60 * 1000) {
+        alert("Sessão expirada. Faça login novamente.");
+        sair();
+      }
+    }
     const posts = [
       {
         id: 1,
@@ -80,10 +94,10 @@
       }
     ];
 
-    // Função para mostrar os posts no HTML
+  
     function carregarPosts() {
       const div = document.getElementById("posts");
-      div.innerHTML = ""; // limpa o conteúdo antes
+      div.innerHTML = ""; 
 
       posts.forEach(p => {
         div.innerHTML += `
@@ -99,6 +113,7 @@
 
     function sair() {
       localStorage.removeItem("token");
+      localStorage.removeItem("loginTime");
       window.location.href = "index.html";
     }
 

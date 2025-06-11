@@ -1,6 +1,6 @@
 # 📘 Projeto de Autenticação com Listagem de Posts
 
-Este projeto é uma aplicação simples de login e exibição de posts utilizando **HTML**, **CSS**, **JavaScript** e uma **API em Node.js com JWT** para autenticação.
+Este projeto é uma aplicação simples de login e exibição de posts utilizando **HTML**, **JavaScript** e uma **API em Node.js com JWT** para autenticação.
 
 ---
 

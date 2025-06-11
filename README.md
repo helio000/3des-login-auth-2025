@@ -84,7 +84,7 @@ Página onde o usuário informa seu e-mail e senha para acessar os posts.
 
 Após o login, o usuário visualiza a listagem dos posts.
 
-<<<<<<< HEAD
+
 ![Tela Principal](./images/home-atividade2.png)
 =======
 Authorization: Bearer <token>

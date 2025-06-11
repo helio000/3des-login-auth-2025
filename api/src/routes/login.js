@@ -1,9 +1,7 @@
+const express = require('express');
+const router = express.Router();
 const loginController = require('../controllers/login');
 
-const express = require('express');
+router.post('/', loginController.login); // rota simplificada
 
-const loginRoutes = express.Router();
-
-loginRoutes.post('/login', loginController.Login);
-
-module.exports = loginRoutes;
+module.exports = router;
